@@ -1,0 +1,43 @@
+nav {
+    background-color: #333; 
+    padding: 10px; 
+    text-align: start; 
+  }
+
+  nav a {
+    color: white; 
+    text-decoration: none; 
+    padding: 10px 20px;
+    margin: 0 10px; 
+    border-radius: 5px; 
+  }
+  
+  .hovereable:hover {
+    background-color: #555; 
+  }
+  
+  nav a.active {
+    background-color: #4CAF50;
+  }
+  span{
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px; 
+    margin: 0 10px; 
+    border-radius: 5px; 
+    font-size: 20px;
+  }
+  span:hover {
+    background-color: #555; 
+  }
+
+  .abusqueda{
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: #555;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+  }
+

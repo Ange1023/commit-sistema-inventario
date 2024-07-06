@@ -1,0 +1,23 @@
+
+
+<section class="modal">
+    <form [formGroup]="busquedaForm" (ngSubmit)="buscarProductos()" class="searchForm">
+        <select name="product" id="producto">
+            <option *ngFor="let producto of productos" value="proucto.id">{{producto.nombre}}</option>
+        </select>
+        <input formControlName="categoria" placeholder="Categoría">
+        <select name="sede" id="sedes">
+            <option *ngFor="let sede of sedes" value="">{{sede.nombre}}</option>
+        </select>
+        <input type="number" formControlName="cantidad" placeholder="Cantidad">
+        <input type="number" formControlName="precio" placeholder="Precio">
+        <input formControlName="marca" placeholder="Marca">
+        <button type="submit">Buscar</button>
+    </form>
+</section>
+
+<div *ngIf="resultados.length > 0">
+    <div *ngFor="let producto of resultados">
+        {{ producto.nombre }} - {{ producto.marca }} - {{ producto.precio }}  - {{ producto.categoria }} - {{ producto.sede }} - {{ producto.cantidad }} -  
+    </div>
+</div>
