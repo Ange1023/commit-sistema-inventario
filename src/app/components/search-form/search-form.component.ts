@@ -22,7 +22,8 @@ export class SearchFormComponent implements OnInit {
       categoria: [''],
       precioMin: [null],
       precioMax: [null],
-      proveedor: ['']
+      proveedor: [''],
+      marca:[''],
     });
   }
 
@@ -36,6 +37,7 @@ export class SearchFormComponent implements OnInit {
     const resultados = productos.filter((producto: any) => {
       return (!criterios.nombre || producto.nombre.toLowerCase().includes(criterios.nombre.toLowerCase())) &&
              (!criterios.categoria || producto.categoria.toLowerCase() === criterios.categoria.toLowerCase()) &&
+             (!criterios.marca || producto.marca.toLowerCase() === criterios.marca.toLowerCase()) &&
              (!criterios.precioMin || producto.precio >= criterios.precioMin) &&
              (!criterios.precioMax || producto.precio <= criterios.precioMax) &&
              (!criterios.proveedor || producto.proveedor.toLowerCase().includes(criterios.proveedor.toLowerCase()));
