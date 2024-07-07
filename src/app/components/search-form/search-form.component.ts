@@ -40,8 +40,8 @@ export class SearchFormComponent implements OnInit {
              (!criterios.precioMax || producto.precio <= criterios.precioMax) &&
              (!criterios.proveedor || producto.proveedor.toLowerCase().includes(criterios.proveedor.toLowerCase()));
     });
-  
-    // Redirigir a la página de resultados con los resultados de la búsqueda
+    
+
     this.router.navigate(['/resultados'], { state: { resultados } });
   }
   
