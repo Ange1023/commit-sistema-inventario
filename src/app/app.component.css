@@ -1,14 +1,15 @@
 nav {
     background-color: #333; 
     padding: 10px; 
-    text-align: start; 
+    text-align: start;
+    display: flex;
+    gap: 10px;
   }
 
   nav a {
     color: white; 
     text-decoration: none; 
     padding: 10px 20px;
-    margin: 0 10px; 
     border-radius: 5px; 
   }
   
@@ -23,7 +24,6 @@ nav {
     color: white;
     text-decoration: none;
     padding: 10px 20px; 
-    margin: 0 10px; 
     border-radius: 5px; 
     font-size: 20px;
   }
@@ -31,9 +31,8 @@ nav {
     background-color: #555; 
   }
 
-  .abusqueda{
+  nav button{
     padding: 10px 20px;
-    margin-top: 10px;
     cursor: pointer;
     background-color: #555;
     color: #fff;
@@ -41,3 +40,6 @@ nav {
     border-radius: 4px;
   }
 
+  .logout-button {
+    margin-left: auto; 
+  }

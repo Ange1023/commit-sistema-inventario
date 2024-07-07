@@ -46,3 +46,6 @@
     background-color: rgb(0, 0, 0);
     color: white;
   }
+  .form-row input {
+    width: 80px; 
+  }

@@ -17,6 +17,7 @@ import { SedeService } from './services/sede.service';
 import { SearchFormComponent } from './components/search-form/search-form.component';
 import { RickrollComponent } from './components/rickroll/rickroll.component';
 import { LoginComponent } from './components/login/login.component';
+import { ResultadosComponent } from './components/resultados/resultados.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { LoginComponent } from './components/login/login.component';
     SearchFormComponent,
     RickrollComponent,
     LoginComponent,
+    ResultadosComponent,
   ],
   imports: [
     BrowserModule,

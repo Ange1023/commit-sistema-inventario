@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Producto, ProductoService } from '../../services/producto.service';
-import { Sede, SedeService } from '../../services/sede.service';
-import { InventarioService, InventarioItem } from '../../services/inventario.service';
 
 @Component({
   selector: 'app-search-form',
@@ -11,36 +10,39 @@ import { InventarioService, InventarioItem } from '../../services/inventario.ser
 })
 export class SearchFormComponent implements OnInit {
   busquedaForm: FormGroup;
-  resultados: any[] = [];
-  sedes: Sede[] = []
-  productos: Producto[] = []
+  productos: Producto[] = [];
 
-  constructor(private fb: FormBuilder, private inventarioService: InventarioService, private productoService: ProductoService, private sedeService: SedeService) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private productoService: ProductoService,
+  ) {
     this.busquedaForm = this.fb.group({
       nombre: [''],
       categoria: [''],
-      sede: [''],
-      cantidad: [null],
-      precio: [null], // Agregar campo de precio
-      marca: [''] // Agregar campo de marca
+      precioMin: [null],
+      precioMax: [null],
+      proveedor: ['']
     });
   }
 
   ngOnInit(): void {
-    this.sedes = this.sedeService.getSedes()
     this.productos = this.productoService.getProductos();
   }
 
   buscarProductos() {
     const criterios = this.busquedaForm.value;
     const productos = JSON.parse(localStorage.getItem('productos') || '[]');
-    this.resultados = productos.filter((producto: any) => {
-      return (!criterios.nombre || producto.nombre.includes(criterios.nombre)) &&
-             (!criterios.categoria || producto.categoria === criterios.categoria) &&
-             (!criterios.sede || producto.sede === criterios.sede) &&
-             (!criterios.cantidad || producto.cantidad >= criterios.cantidad) &&
-             (!criterios.precio || producto.precio <= criterios.precio) && // Filtrar por precio
-             (!criterios.marca || producto.marca === criterios.marca); // Filtrar por marca
+    const resultados = productos.filter((producto: any) => {
+      return (!criterios.nombre || producto.nombre.toLowerCase().includes(criterios.nombre.toLowerCase())) &&
+             (!criterios.categoria || producto.categoria.toLowerCase() === criterios.categoria.toLowerCase()) &&
+             (!criterios.precioMin || producto.precio >= criterios.precioMin) &&
+             (!criterios.precioMax || producto.precio <= criterios.precioMax) &&
+             (!criterios.proveedor || producto.proveedor.toLowerCase().includes(criterios.proveedor.toLowerCase()));
     });
+  
+    // Redirigir a la página de resultados con los resultados de la búsqueda
+    this.router.navigate(['/resultados'], { state: { resultados } });
   }
+  
 }
